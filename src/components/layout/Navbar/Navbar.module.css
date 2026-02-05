@@ -24,6 +24,20 @@
   font-size: 1.1rem;
 }
 
+.themeToggle {
+  border: none;
+  background-color: #444;
+  color: #fff;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+
+.themeToggle:hover {
+  background-color: #666;
+}
+
 .user {
   font-size: 0.9rem;
   opacity: 0.9;

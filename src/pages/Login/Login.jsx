@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button/Button";
 import Loader from "../../components/common/Loader/Loader";
 import useAuth from "../../hooks/useAuth";
@@ -7,6 +8,7 @@ import styles from "./Login.module.css";
 
 const Login = () => {
   const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,9 +23,15 @@ const Login = () => {
       return;
     }
 
+    if (email !== "admin@admin.com" || password !== "admin1234") {
+      setError("Invalid credentials.");
+      return;
+    }
+
     try {
       setLoading(true);
       await login(email, password);
+      navigate("/welcome");
     } catch (err) {
       setError("Login failed.");
     } finally {
